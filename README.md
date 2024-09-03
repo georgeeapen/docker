@@ -22,21 +22,57 @@ Docker image is a template of a container
 
 Pull an image from repository : ```docker pull <image name>```
 
+Remove an image : ``` docker rmi <image name> ```
+
+Inspect layers of an image : ``` docker inspect image <image name> ```
+
 Pull and or run a container : ``` docker run <image name>```
 
-Interact with the container : ```docker run -it <image name> <command>``` Eg: docker run -it alpine sh
+Interact with the container : ```docker run -it <image name> <command>``` 
+
+Remove the container after each run : ``` docker run --rm <image name> ```
+
+Eg: docker run -it alpine sh
+
+Mount a volumn to the host system : ``` docker run -v <hostDir>:<dockerDir> <image name> ```
+
+Eg docker run -it -v /Users/hostDockerV:/bin/dockerV alpine sh
 
 List running containers :  ``` docker ps ```
  
 List all the containers : ``` docker ps -a ```
 
-Start a container by Id : ``` docker start <containerId> ````
+Start a container by Id : ``` docker start <containerId> ```
 
 Stop a container by Id : ``` docker stop <containerId> ```
 
 Run the container in the background(detach) : ``` docker run -d <image name> ```
 
-Run a command in a running container ``` docker exec <containerId> <command> ``` Eg: docker exec 234123423 ls
+Run a command in a running container ``` docker exec <containerId> <command> ``` 
+
+Eg: docker exec 234123423 ls
+
+Pass an argument to the container : ``` docker run -e <envKey>=<envValue> <imageName> ``` 
+
+Eg: docker run -e MYSQL_ROOT_PASSWORD=secret -d mysql
+
+Create a volume : ``` docker volume create <volume name> ```
+
+List all volume : ``` docker volume ls ```
+
+Inspect a volumen : ``` docker volume inspect <volume name> ```
+
+Mount a volume to a container : ``` docker run -v <host volume name>:<volume name> <image name> ```
+
+Remove a volume : ``` docker volume rm <volume name>```
+
+Port forwarding : ``` docker run -p <host port>:<container port> <image name> ```
+
+Eg: docker run -p 8080:80 nginx
+
+Create a new image from a container's change : ``` docket commit <container name> <new image name> ```
+
+
 
 
 
