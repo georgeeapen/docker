@@ -72,6 +72,48 @@ Eg: docker run -p 8080:80 nginx
 
 Create a new image from a container's change : ``` docket commit <container name> <new image name> ```
 
+# Dockerfile
+
+Define the base image ``` FROM <image name> ```
+
+Run a command in the image ``` RUN <command> ```
+
+Run multiple commands ``` RUN <command>; \ <command> ```
+
+Eg: RUN mkdir test; \
+        cd test; \
+        touch hello.txt
+
+Define work dir ``` WORKDIR ```
+
+Run a command in the container ``` CMD <command> ```
+
+Entrypoint command ``` ENTRYPOINT ["java", "Hello"] ```
+
+CMD vs ENTRYPOINT -> when an argument is passed to the container CMD treats it as a command whereas ENTRYPOINT treats it as an argument
+
+Run a docker build ``` docker build -t <tag name> <dir> ```
+
+Eg: docker build -t newimage .
+
+Copy dir/file to the container ``` COPY <file name> <container location> ```
+
+Exec way of writing docker file ``` CMD ["java","Hello"] ```
+
+Network type 
+- Bridge
+- Host
+- None
+- Overlay
+- ipvlan
+- Macvlan
+
+List all the available networks ``` docker network ls ```
+
+Create a new network ``` docker network create -d bridge <bridge name> ```
+
+Run the container on customer n/w ``` docker run --net=<bridge name> <image name> ```
+
 
 
 
